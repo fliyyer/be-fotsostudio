@@ -22,9 +22,12 @@ class Booking extends Model
         'start_time',
         'end_time',
         'subtotal',
+        'discount',
         'tax',
         'total',
+        'promo_id',
         'status',
+        'notes',
     ];
 
     public function studio(): BelongsTo
@@ -47,6 +50,11 @@ class Booking extends Model
         return $this->belongsTo(StudioSchedule::class);
     }
 
+    public function promo(): BelongsTo
+    {
+        return $this->belongsTo(Promo::class);
+    }
+
     public function bookingItems(): HasMany
     {
         return $this->hasMany(BookingItem::class);
@@ -55,5 +63,10 @@ class Booking extends Model
     public function payment(): HasOne
     {
         return $this->hasOne(Payment::class);
+    }
+
+    public function invoice(): HasOne
+    {
+        return $this->hasOne(Invoice::class);
     }
 }

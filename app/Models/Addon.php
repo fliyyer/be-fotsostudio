@@ -25,6 +25,11 @@ class Addon extends Model
         return $this->belongsTo(Studio::class);
     }
 
+    public function photoPackages(): BelongsToMany
+    {
+        return $this->belongsToMany(PhotoPackage::class, 'package_addon')->withTimestamps();
+    }
+
     public function bookingItems(): HasMany
     {
         return $this->hasMany(BookingItem::class);

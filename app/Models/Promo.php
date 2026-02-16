@@ -4,27 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class StudioSchedule extends Model
+class Promo extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'studio_id',
-        'date',
-        'start_time',
-        'end_time',
+        'code',
+        'discount_type',
+        'discount_value',
+        'minimum_purchase',
         'quota',
-        'booked_count',
-        'is_blocked',
+        'used_count',
+        'start_date',
+        'end_date',
+        'is_active',
     ];
-
-    public function studio(): BelongsTo
-    {
-        return $this->belongsTo(Studio::class);
-    }
 
     public function bookings(): HasMany
     {

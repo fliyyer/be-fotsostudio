@@ -8,16 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('studios', function (Blueprint $table) {
+        Schema::create('photo_packages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('studio_id')->constrained('studios')->cascadeOnDelete();
             $table->string('name');
-            $table->string('address');
-            $table->string('city');
-            $table->string('phone');
-            $table->time('opening_time');
-            $table->time('closing_time');
-            $table->integer('slot_duration');
-            $table->integer('max_booking_per_slot');
+            $table->text('description');
+            $table->integer('duration');
+            $table->decimal('price', 12, 2);
+            $table->integer('total_photos');
+            $table->text('facilities')->nullable();
             $table->string('thumbnail')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
@@ -26,6 +25,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('studios');
+        Schema::dropIfExists('photo_packages');
     }
 };

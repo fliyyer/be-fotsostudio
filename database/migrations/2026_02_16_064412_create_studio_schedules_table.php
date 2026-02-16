@@ -1,26 +1,16 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('studio_schedules', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('studio_id')->constrained('studios')->cascadeOnDelete();
-            $table->date('date');
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->boolean('is_booked')->default(false);
-            $table->timestamps();
-        });
+        // Legacy migration retained as no-op to avoid duplicate table creation.
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('studio_schedules');
+        // Legacy migration retained as no-op.
     }
 };

@@ -6,18 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Payment extends Model
+class Invoice extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'booking_id',
-        'payment_method',
-        'amount',
-        'transaction_id',
-        'proof_image',
-        'status',
-        'paid_at',
+        'invoice_number',
+        'pdf_path',
+        'sent_email_at',
+        'sent_whatsapp_at',
     ];
 
     public function booking(): BelongsTo
